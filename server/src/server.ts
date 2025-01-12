@@ -1,10 +1,23 @@
-import express from "express";
-import setupRoutes from "./routes";
+import * as dotenv from "dotenv";
+import app from "./app";
+import { initializeDatabase } from "./config/db.config";
 
-const app = express();
+dotenv.config();
 
-app.use(express.json());
+const PORT = process.env.PORT || 3000;
 
-setupRoutes(app);
+const initialize = async () => {
+  try {
+    await initializeDatabase();
+    console.log("database init");
 
-export default app;
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+initialize();

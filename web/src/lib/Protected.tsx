@@ -8,12 +8,19 @@ type Props = {
 };
 
 const Protected = ({ children }: Props) => {
-  const { user } = useAuth() as AuthContextType;
+  const { loading, userAuthenticated } = useAuth() as AuthContextType;
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
+  if (loading) {
+    console.log("loading");
+    return <h1>Loading ...</h1>;
   }
 
+  if (!userAuthenticated) {
+    console.log("user not authenticated so going to login page");
+    return <Navigate to="/login" />;
+  }
+
+  console.log("hurray user login done");
   return children;
 };
 

@@ -1,9 +1,16 @@
 import { Router, Request, Response } from "express";
 
+import { AuthRepository } from "../repository/auth.repository";
+import { AuthService } from "../service/auth.service";
+import { AuthController } from "../controller/auth.controller";
+
 const router = Router();
 
-router.get("/", (req: Request, res: Response) => {
-  res.status(200).send("Auth Route Working Correct");
-});
+const authRepository = new AuthRepository();
+const authService = new AuthService(authRepository);
+const authController = new AuthController(authService);
+
+router.post("/google", authController.handleGoogleLogin.bind(authController));
+router.post("/verify", authController.verifyLoginUser.bind(authController));
 
 export default router;

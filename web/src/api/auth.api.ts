@@ -10,7 +10,7 @@ export const authenticateWithGoogle = async (credential: string) => {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify({ credential }),
+    body: JSON.stringify({ googleCredential: credential }),
   });
   const data: AuthResponse = await response.json();
   return data;
@@ -32,13 +32,13 @@ export const logoutUser = async () => {
 };
 
 // verify user login
-export const verifyUserLogin = async (): Promise<AuthResponse | undefined> => {
+export const verifyUserLogin = async (): Promise<any> => {
   try {
     const response = await fetch(`${BASE_URL}/auth/verify`, {
-      method: "GET",
+      method: "POST",
       credentials: "include",
     });
-    const data: AuthResponse = await response.json();
+    const data = await response.json();
     return data;
   } catch (error) {
     console.log("faile to get user login info", error);

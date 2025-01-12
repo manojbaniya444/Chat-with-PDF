@@ -11,6 +11,7 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export const AuthProvider = ({ children }: { children: any }) => {
   const [user, setUser] = useState<null | UserInfo>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [userAuthenticated, setUserAuthenticated] = useState<boolean>(false);
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -19,10 +20,13 @@ export const AuthProvider = ({ children }: { children: any }) => {
         const data = await verifyUserLogin();
         if (data?.user) {
           setUser(data.user);
+          setUserAuthenticated(true);
         }
+        console.log("User set success");
+        setLoading(false);
       } catch (error) {
         console.log("Failed to verify user login: ", error);
-      } finally {
+        setUserAuthenticated(false);
         setLoading(false);
       }
     };
@@ -30,11 +34,14 @@ export const AuthProvider = ({ children }: { children: any }) => {
     checkLoginStatus();
   }, []);
 
+  console.log(user);
+
   const login = async (googleCredential: string) => {
     try {
-      const { token, user } = await authenticateWithGoogle(googleCredential);
-      if (token && user) {
+      const { user } = await authenticateWithGoogle(googleCredential);
+      if (user) {
         setUser(user);
+        setUserAuthenticated(true);
         console.log("Login successful: ", user);
       }
     } catch (error) {
@@ -46,10 +53,13 @@ export const AuthProvider = ({ children }: { children: any }) => {
   const logout = async () => {
     await logoutUser();
     setUser(null);
+    setUserAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, loading, logout }}>
+    <AuthContext.Provider
+      value={{ user, login, loading, logout, userAuthenticated }}
+    >
       {children}
     </AuthContext.Provider>
   );
