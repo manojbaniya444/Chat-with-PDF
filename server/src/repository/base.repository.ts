@@ -1,4 +1,4 @@
-import { pool } from "../config/db.config";
+import { pool } from "../db/db.config";
 import { DatabaseError } from "../utils/errors/db.error";
 
 export class BaseRepository {

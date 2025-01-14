@@ -18,4 +18,13 @@ export const config = {
     jwtSecret: process.env.JWT_SECRET!,
     jwtExpiry: process.env.JWT_EXPIRY!,
   },
+  log: {
+    level: process.env.LOG_LEVEL,
+  },
+  aws: {
+    ak: process.env.AWS_S3_AK,
+    sk: process.env.AWS_S3_SK,
+    region: process.env.AWS_REGION,
+    bucket: process.env.S3_BUCKET_NAME,
+  },
 };

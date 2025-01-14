@@ -14,13 +14,16 @@
   "devDependencies": {
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
+    "@types/express": "^4.17.21",
     "@types/node": "^22.10.1",
     "@types/pg": "^8.11.10",
+    "@types/winston": "^2.4.4",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.726.1",
+    "@aws-sdk/s3-request-presigner": "^3.726.1",
     "@types/jsonwebtoken": "^9.0.7",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -28,6 +31,7 @@
     "express": "^4.21.2",
     "google-auth-library": "^9.15.0",
     "jsonwebtoken": "^9.0.2",
-    "pg": "^8.13.1"
+    "pg": "^8.13.1",
+    "winston": "^3.17.0"
   }
 }

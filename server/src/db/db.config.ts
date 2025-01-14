@@ -1,6 +1,6 @@
 import pg from "pg";
 import { tableSQLQuery } from "./db.schema";
-import { config } from "./env.config";
+import { config } from "../config/env.config";
 
 export const pool = new pg.Pool({
   user: config.database.user,

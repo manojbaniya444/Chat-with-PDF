@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import app from "./app";
-import { initializeDatabase } from "./config/db.config";
+import { initializeDatabase } from "./db/db.config";
+import { logger } from "./utils/logger";
 
 dotenv.config();
 
@@ -9,13 +10,13 @@ const PORT = process.env.PORT || 3000;
 const initialize = async () => {
   try {
     await initializeDatabase();
-    console.log("database init");
+    logger.info("database init");
 
     app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+      logger.info(`Server is running on port ${PORT}`);
     });
   } catch (error) {
-    console.log(error);
+    logger.error("Error starting server: ", error);
     process.exit(1);
   }
 };

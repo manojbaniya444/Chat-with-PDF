@@ -1,5 +1,4 @@
 import { IUser, User } from "../model/user.model";
-import { AuthError } from "../utils/errors/auth.error";
 import { DatabaseError } from "../utils/errors/db.error";
 import { BaseRepository } from "./base.repository";
 
@@ -11,10 +10,9 @@ export class AuthRepository extends BaseRepository {
       const result = await this.executeQuery(query, [email]);
       return result.length ? result[0] : null;
     } catch (error) {
-      throw new AuthError("Error querying database to find user by email");
+      throw new DatabaseError("Error querying database to find user by email");
     }
   }
-
   // new user
   async createUser(userDetails: Partial<IUser>): Promise<User | null> {
     try {

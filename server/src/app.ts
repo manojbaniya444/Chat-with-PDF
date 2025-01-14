@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import setupRoutes from "./routes";
 import middlewares from "./middleware";
 import cors from "cors";
@@ -14,6 +14,11 @@ app.use(
   })
 );
 app.use(cookieParser());
+app.get("/health", (req: Request, res: Response) => {
+  return res
+    .status(200)
+    .json({ success: true, message: "Server up and running" });
+});
 
 setupRoutes(app);
 app.use(middlewares.notFoundMiddleware);
