@@ -1,4 +1,4 @@
-import { UploadService } from "../service/upload.service";
+import { UploadService } from "../service/azureStorage.service";
 
 import { Request, Response } from "express";
 import { logger } from "../utils/logger";
@@ -11,10 +11,7 @@ export class UploadController {
     this.uploadService = uploadService;
   }
 
-  async getPresignedUrl(
-    req: Request,
-    res: Response
-  ): Promise<any> {
+  async getSasToken(req: Request, res: Response): Promise<any> {
     let filename;
     try {
       const { fileName, fileType } = req.body;
@@ -28,18 +25,15 @@ export class UploadController {
       }
       filename = fileName;
 
-      const uploadData = await this.uploadService.generatePresignedUrl(
-        fileName,
-        fileType
-      );
+      const sas = await this.uploadService.generateSasToken(fileName);
 
       return res.json({
-        uploadUrl: uploadData.uploadUrl,
-        key: uploadData.key,
+        uri: sas.baseUri,
+        token: sas.token
       });
     } catch (error) {
       logger.error(
-        `Error generating pre-signed URL for file: ${filename}`,
+        `Error generating sas token in azure client: ${filename}`,
         error
       );
 
@@ -51,7 +45,7 @@ export class UploadController {
 
       return res.status(500).json({
         success: false,
-        message: "Unknown error occured while generating presigned url",
+        message: "Unknown error occured generating sas token",
       });
     }
   }

@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { Upload, X } from "lucide-react";
 
-interface PresignedUrlResponse {
-  uploadUrl: string;
-  key: string;
-}
-
-interface ProcessResponse {
-  success: boolean;
-  documentId: string;
+interface SasResponse {
+  token: string;
+  uri: string;
 }
 
 const FileUpload: React.FC = () => {
@@ -17,32 +12,27 @@ const FileUpload: React.FC = () => {
   const [error, setError] = useState<string>("");
   const [uploadProgress, setUploadProgress] = useState<number>(0);
 
-  const getPresignedUrl = async (
-    fileName: string
-  ): Promise<PresignedUrlResponse> => {
+  const getSasToken = async (fileName: string): Promise<SasResponse> => {
     try {
-      const response = await fetch(
-        "http://localhost:8080/upload/get-presigned-url",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fileName,
-            fileType: "application/pdf",
-          }),
-        }
-      );
+      const response = await fetch(`http://localhost:8080/upload/getSasToken`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fileName: `documents/${Date.now()}-${fileName}`,
+          fileType: "application/pdf",
+        }),
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+      console.log(response);
 
-      const data: PresignedUrlResponse = await response.json();
-      return data;
+      return await response.json();
     } catch (error) {
-      throw new Error("Failed to get upload URL");
+      throw new Error("Failed to get SAS token");
     }
   };
 
@@ -60,45 +50,56 @@ const FileUpload: React.FC = () => {
 
   const handleUpload = async (): Promise<void> => {
     if (!file) return;
-
     setLoading(true);
     try {
-      // Get pre-signed URL
-      const { uploadUrl, key } = await getPresignedUrl(file.name);
+      const { uri, token } = await getSasToken(file.name);
+      const blobUrl = `${uri}?${token}`;
 
-      // Upload directly to S3
-      const uploadResponse = await fetch(uploadUrl, {
+      const uploadResponse = await fetch(blobUrl, {
         method: "PUT",
         body: file,
         headers: {
+          "x-ms-blob-type": "BlockBlob",
           "Content-Type": "application/pdf",
         },
       });
-
+      console.log(uploadResponse);
       if (!uploadResponse.ok) {
         throw new Error(`Upload failed with status: ${uploadResponse.status}`);
       }
 
-      //TODO: Trigger server processing
-      console.log("File uploaded successfully");
-      console.log(uploadResponse, key);
+      //TODO: Trigger Processing
+      const processResponse = await fetch(
+        `http://localhost:8080/upload/processPdf`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            blobUrl: uri,
+            fileName: file.name,
+          }),
+        }
+      );
+
+      if (!processResponse.ok) {
+        throw new Error(
+          `Processing failed with status: ${processResponse.status}`
+        );
+      }
 
       setFile(null);
       setUploadProgress(100);
       setTimeout(() => setUploadProgress(0), 1000);
     } catch (err) {
+      console.error("Upload error:", err);
       setError(
         err instanceof Error ? err.message : "An unknown error occurred"
       );
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleRemoveFile = (): void => {
-    setFile(null);
-    setError("");
-    setUploadProgress(0);
   };
 
   return (
@@ -125,7 +126,7 @@ const FileUpload: React.FC = () => {
           <div className="mt-4 flex items-center justify-between bg-gray-50 p-2 rounded">
             <span className="text-sm truncate">{file.name}</span>
             <button
-              onClick={handleRemoveFile}
+              onClick={() => setFile(null)}
               className="text-red-500 hover:text-red-700"
               type="button"
               aria-label="Remove file"

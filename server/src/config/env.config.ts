@@ -21,10 +21,10 @@ export const config = {
   log: {
     level: process.env.LOG_LEVEL,
   },
-  aws: {
-    ak: process.env.AWS_S3_AK,
-    sk: process.env.AWS_S3_SK,
-    region: process.env.AWS_REGION,
-    bucket: process.env.S3_BUCKET_NAME,
+  azure: {
+    storageKey: process.env.AZURE_STORAGE_KEY,
+    storageConnection: process.env.AZURE_STORAGE_CONNECTION_STRING,
+    containerName: process.env.AZURE_CONTAINER_NAME,
+    accountName: process.env.AZURE_STORAGE_ACCOUNT_NAME,
   },
 };

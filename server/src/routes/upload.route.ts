@@ -1,6 +1,6 @@
 import express from "express";
 import { UploadRepository } from "../repository/upload.repository";
-import { UploadService } from "../service/upload.service";
+import { UploadService } from "../service/azureStorage.service";
 import { UploadController } from "../controller/upload.controller";
 
 const router = express.Router();
@@ -11,8 +11,8 @@ const uploadController = new UploadController(uploadService);
 
 // get presigned url
 router.post(
-  "/get-presigned-url",
-  uploadController.getPresignedUrl.bind(uploadController)
+  "/getSasToken",
+  uploadController.getSasToken.bind(uploadController)
 );
 
 export default router;
