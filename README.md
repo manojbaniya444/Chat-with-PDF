@@ -1,8 +1,5 @@
-# Chat with pdf
+# Chat with PDF
 
-# steps for efficient file uploading to s3
-- creating an s3 bucket
-- configure policies
-- generate a pre signed urls in the backend
-- the react app interacts with the backend to get a pre signed url and uploads the file directly to s3
-- never expose aws credentials in frontend directly use a presigned url
+ChatWithPDF is a user friendly application designed to streamline interactions with PDF documents. The app features a clean interface that allows users to view and interact with PDFs while conversing with an AI assistant for guidance, content analysis and document related queries.
+
+![Chat with PDF image](./assets/chatwithpdf.webp)
