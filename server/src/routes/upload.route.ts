@@ -14,5 +14,6 @@ router.post(
   "/getSasToken",
   uploadController.getSasToken.bind(uploadController)
 );
+router.post("/processPdf", uploadController.processPdf.bind(uploadController));
 
 export default router;

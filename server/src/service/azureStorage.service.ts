@@ -1,15 +1,13 @@
 import { UploadRepository } from "../repository/upload.repository";
 import { config } from "../config/env.config";
 import { logger } from "../utils/logger";
-import { UploadError } from "../utils/errors/upload.error";
-
 import {
   BlobServiceClient,
   StorageSharedKeyCredential,
   BlobSASPermissions,
   generateBlobSASQueryParameters,
-  SASQueryParameters,
 } from "@azure/storage-blob";
+import { UploadError } from "../utils/errors/upload.error";
 
 export class UploadService {
   private uploadRepository: UploadRepository;
@@ -34,6 +32,41 @@ export class UploadService {
     } catch (error) {
       logger.error("Error while connecting azure blob storage", error);
       throw new Error("Error connecting azure blob storage");
+    }
+  }
+
+  async fetchPdfFromAzure(
+    blobName: string,
+    containerName?: string
+  ): Promise<Buffer> {
+    try {
+      const containerClient = this.blobServiceClient.getContainerClient(
+        this.containerName
+      );
+      const blobClient = containerClient.getBlobClient(blobName);
+
+      const downloadBlockBlobResponse = await blobClient.download();
+      const chunks: Buffer[] = [];
+
+      for await (const chunk of downloadBlockBlobResponse.readableStreamBody!) {
+        chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+      }
+
+      return Buffer.concat(chunks);
+    } catch (error) {
+      if (error instanceof Error) {
+        logger.error("Error downloading pdf Buffer from Azure storage", error);
+        throw new UploadError(
+          `Error downloading pdf from azure ${error.message}`
+        );
+      } else {
+        logger.error(
+          "Unknown error while downloading pdf Buffer from Azure storage server"
+        );
+        throw new UploadError(
+          "Unknown Error while downloading pdf from server"
+        );
+      }
     }
   }
 
@@ -64,12 +97,17 @@ export class UploadService {
     ).toString();
 
     const sasUri = sasToken[0] === "?" ? sasToken : `?${sasToken}`;
-    
+
     return {
       token: sasUri,
       baseUri: blobClient.url,
     };
   }
 
-  async saveDocument() {}
+  async saveDocument(embeddingResponse: {
+    docs: string[];
+    embeddings: number[][];
+  }) {
+    //? save the respective document and embedding to the vector store
+  }
 }

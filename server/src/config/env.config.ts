@@ -27,4 +27,11 @@ export const config = {
     containerName: process.env.AZURE_CONTAINER_NAME,
     accountName: process.env.AZURE_STORAGE_ACCOUNT_NAME,
   },
+  embeddings: {
+    providerName: process.env.LOCAL_EMBEDDING_PROVIDER,
+    localEmbeddingDim: process.env.LOCAL_EMBEDDING_DIM,
+  },
+  localModel: {
+    baseUrl: process.env.LOCAL_MODEL_BASE_URL,
+  },
 };

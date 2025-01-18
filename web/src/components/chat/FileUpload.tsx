@@ -12,18 +12,22 @@ const FileUpload: React.FC = () => {
   const [error, setError] = useState<string>("");
   const [uploadProgress, setUploadProgress] = useState<number>(0);
 
+  // generate sastoken
   const getSasToken = async (fileName: string): Promise<SasResponse> => {
     try {
-      const response = await fetch(`http://localhost:8080/upload/getSasToken`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fileName: `documents/${Date.now()}-${fileName}`,
-          fileType: "application/pdf",
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/upload/getSasToken`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fileName: `documents/${Date.now()}-${fileName}`,
+            fileType: "application/pdf",
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -70,7 +74,7 @@ const FileUpload: React.FC = () => {
 
       //TODO: Trigger Processing
       const processResponse = await fetch(
-        `http://localhost:8080/upload/processPdf`,
+        `${import.meta.env.VITE_APP_API_URL}/upload/processPdf`,
         {
           method: "POST",
           headers: {

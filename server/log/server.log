@@ -70,3 +70,87 @@
 {"level":"info","message":"Server is running on port 8080","timestamp":"2025-04-05 00:04"}
 {"level":"info","message":"database init","timestamp":"2025-08-05 00:08"}
 {"level":"info","message":"Server is running on port 8080","timestamp":"2025-08-05 00:08"}
+{"level":"info","message":"database init","timestamp":"2025-51-06 19:51"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-51-06 19:51"}
+{"level":"info","message":"database init","timestamp":"2025-55-06 19:55"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-55-06 19:55"}
+{"code":"BlobNotFound","details":{"code":"BlobNotFound","content-length":"215","content-type":"application/xml","date":"Sat, 18 Jan 2025 14:11:49 GMT","errorCode":"BlobNotFound","message":"The specified blob does not exist.\nRequestId:9f3414c9-701e-0060-66b2-693237000000\nTime:2025-01-18T14:11:50.2127812Z","server":"Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0","vary":"Origin","x-ms-client-request-id":"79f3add8-3612-4967-a805-b71eef71e760","x-ms-request-id":"9f3414c9-701e-0060-66b2-693237000000","x-ms-version":"2025-01-05"},"level":"error","message":"Error downloading pdf Buffer from Azure storage The specified blob does not exist.\nRequestId:9f3414c9-701e-0060-66b2-693237000000\nTime:2025-01-18T14:11:50.2127812Z","name":"RestError","stack":"RestError: The specified blob does not exist.\nRequestId:9f3414c9-701e-0060-66b2-693237000000\nTime:2025-01-18T14:11:50.2127812Z\n    at handleErrorResponse (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-client\\src\\deserializationPolicy.ts:255:17)\n    at deserializeResponseBody (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-client\\src\\deserializationPolicy.ts:159:43)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at StorageContextClient.sendOperationRequest (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-client\\src\\serviceClient.ts:207:27)\n    at StorageContextClient.sendOperationRequest (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-http-compat\\src\\extendedClient.ts:99:23)\n    at D:\\Chat-with-PDF\\server\\node_modules\\@azure\\storage-blob\\src\\Clients.ts:1225:9\n    at Object.withSpan (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-tracing\\src\\tracingClient.ts:70:22)","statusCode":404,"timestamp":"2025-56-06 19:56"}
+{"code":"UPLOAD_ERROR","level":"error","message":"Error while processing pdf Error downloading pdf from azure","stack":"Error: Error downloading pdf from azure\n    at UploadService.<anonymous> (D:\\Chat-with-PDF\\server\\src\\service\\azureStorage.service.ts:59:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\service\\azureStorage.service.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-56-06 19:56"}
+{"level":"info","message":"database init","timestamp":"2025-59-06 19:59"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-59-06 19:59"}
+{"level":"info","message":"database init","timestamp":"2025-59-06 19:59"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-59-06 19:59"}
+{"code":"BlobNotFound","details":{"code":"BlobNotFound","content-length":"215","content-type":"application/xml","date":"Sat, 18 Jan 2025 14:15:01 GMT","errorCode":"BlobNotFound","message":"The specified blob does not exist.\nRequestId:3c33da14-b01e-0040-59b3-694990000000\nTime:2025-01-18T14:15:01.5985107Z","server":"Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0","vary":"Origin","x-ms-client-request-id":"4f45c1ba-6cba-41af-9258-48c6ce09dd4f","x-ms-request-id":"3c33da14-b01e-0040-59b3-694990000000","x-ms-version":"2025-01-05"},"level":"error","message":"Error downloading pdf Buffer from Azure storage The specified blob does not exist.\nRequestId:3c33da14-b01e-0040-59b3-694990000000\nTime:2025-01-18T14:15:01.5985107Z","name":"RestError","stack":"RestError: The specified blob does not exist.\nRequestId:3c33da14-b01e-0040-59b3-694990000000\nTime:2025-01-18T14:15:01.5985107Z\n    at handleErrorResponse (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-client\\src\\deserializationPolicy.ts:255:17)\n    at deserializeResponseBody (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-client\\src\\deserializationPolicy.ts:159:43)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at StorageContextClient.sendOperationRequest (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-client\\src\\serviceClient.ts:207:27)\n    at StorageContextClient.sendOperationRequest (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-http-compat\\src\\extendedClient.ts:99:23)\n    at D:\\Chat-with-PDF\\server\\node_modules\\@azure\\storage-blob\\src\\Clients.ts:1225:9\n    at Object.withSpan (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-tracing\\src\\tracingClient.ts:70:22)","statusCode":404,"timestamp":"2025-00-06 20:00"}
+{"code":"UPLOAD_ERROR","level":"error","message":"Error while processing pdf Error downloading pdf from azure The specified blob does not exist.\nRequestId:3c33da14-b01e-0040-59b3-694990000000\nTime:2025-01-18T14:15:01.5985107Z","stack":"Error: Error downloading pdf from azure The specified blob does not exist.\nRequestId:3c33da14-b01e-0040-59b3-694990000000\nTime:2025-01-18T14:15:01.5985107Z\n    at UploadService.<anonymous> (D:\\Chat-with-PDF\\server\\src\\service\\azureStorage.service.ts:60:15)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\service\\azureStorage.service.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-00-06 20:00"}
+{"code":"BlobNotFound","details":{"code":"BlobNotFound","content-length":"215","content-type":"application/xml","date":"Sat, 18 Jan 2025 14:18:03 GMT","errorCode":"BlobNotFound","message":"The specified blob does not exist.\nRequestId:3c352e67-b01e-0040-2fb3-694990000000\nTime:2025-01-18T14:18:04.1027117Z","server":"Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0","vary":"Origin","x-ms-client-request-id":"c02b1c62-ab6d-46f3-8163-97f99bd14a68","x-ms-request-id":"3c352e67-b01e-0040-2fb3-694990000000","x-ms-version":"2025-01-05"},"level":"error","message":"Error downloading pdf Buffer from Azure storage The specified blob does not exist.\nRequestId:3c352e67-b01e-0040-2fb3-694990000000\nTime:2025-01-18T14:18:04.1027117Z","name":"RestError","stack":"RestError: The specified blob does not exist.\nRequestId:3c352e67-b01e-0040-2fb3-694990000000\nTime:2025-01-18T14:18:04.1027117Z\n    at handleErrorResponse (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-client\\src\\deserializationPolicy.ts:255:17)\n    at deserializeResponseBody (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-client\\src\\deserializationPolicy.ts:159:43)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at StorageContextClient.sendOperationRequest (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-client\\src\\serviceClient.ts:207:27)\n    at StorageContextClient.sendOperationRequest (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-http-compat\\src\\extendedClient.ts:99:23)\n    at D:\\Chat-with-PDF\\server\\node_modules\\@azure\\storage-blob\\src\\Clients.ts:1225:9\n    at Object.withSpan (D:\\Chat-with-PDF\\server\\node_modules\\@azure\\core-tracing\\src\\tracingClient.ts:70:22)","statusCode":404,"timestamp":"2025-03-06 20:03"}
+{"code":"UPLOAD_ERROR","level":"error","message":"Error while processing pdf Error downloading pdf from azure The specified blob does not exist.\nRequestId:3c352e67-b01e-0040-2fb3-694990000000\nTime:2025-01-18T14:18:04.1027117Z","stack":"Error: Error downloading pdf from azure The specified blob does not exist.\nRequestId:3c352e67-b01e-0040-2fb3-694990000000\nTime:2025-01-18T14:18:04.1027117Z\n    at UploadService.<anonymous> (D:\\Chat-with-PDF\\server\\src\\service\\azureStorage.service.ts:60:15)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\service\\azureStorage.service.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-03-06 20:03"}
+{"level":"info","message":"database init","timestamp":"2025-04-06 20:04"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-04-06 20:04"}
+{"level":"info","message":"database init","timestamp":"2025-17-06 20:17"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-17-06 20:17"}
+{"level":"info","message":"database init","timestamp":"2025-52-06 20:52"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-52-06 20:52"}
+{"level":"info","message":"database init","timestamp":"2025-54-06 20:54"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-54-06 20:54"}
+{"level":"info","message":"database init","timestamp":"2025-55-06 20:55"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-55-06 20:55"}
+{"level":"info","message":"database init","timestamp":"2025-55-06 20:55"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-55-06 20:55"}
+{"level":"info","message":"database init","timestamp":"2025-55-06 20:55"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-55-06 20:55"}
+{"level":"info","message":"database init","timestamp":"2025-55-06 20:55"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-55-06 20:55"}
+{"level":"info","message":"database init","timestamp":"2025-56-06 20:56"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-56-06 20:56"}
+{"level":"info","message":"database init","timestamp":"2025-56-06 20:56"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-56-06 20:56"}
+{"level":"info","message":"database init","timestamp":"2025-57-06 20:57"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-57-06 20:57"}
+{"level":"info","message":"database init","timestamp":"2025-57-06 20:57"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-57-06 20:57"}
+{"level":"info","message":"database init","timestamp":"2025-58-06 20:58"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-58-06 20:58"}
+{"level":"info","message":"database init","timestamp":"2025-02-06 21:02"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-02-06 21:02"}
+{"level":"info","message":"database init","timestamp":"2025-03-06 21:03"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-03-06 21:03"}
+{"level":"info","message":"database init","timestamp":"2025-03-06 21:03"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-03-06 21:03"}
+{"level":"info","message":"database init","timestamp":"2025-04-06 21:04"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-04-06 21:04"}
+{"level":"info","message":"database init","timestamp":"2025-05-06 21:05"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-05-06 21:05"}
+{"level":"info","message":"database init","timestamp":"2025-05-06 21:05"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-05-06 21:05"}
+{"level":"info","message":"database init","timestamp":"2025-06-06 21:06"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-06-06 21:06"}
+{"level":"info","message":"database init","timestamp":"2025-06-06 21:06"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-06-06 21:06"}
+{"level":"info","message":"database init","timestamp":"2025-09-06 21:09"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-09-06 21:09"}
+{"level":"info","message":"database init","timestamp":"2025-10-06 21:10"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-10-06 21:10"}
+{"level":"info","message":"database init","timestamp":"2025-10-06 21:10"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-10-06 21:10"}
+{"level":"info","message":"database init","timestamp":"2025-12-06 21:12"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-12-06 21:12"}
+{"level":"info","message":"database init","timestamp":"2025-13-06 21:13"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-13-06 21:13"}
+{"level":"info","message":"database init","timestamp":"2025-14-06 21:14"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-14-06 21:14"}
+{"level":"info","message":"database init","timestamp":"2025-16-06 21:16"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-16-06 21:16"}
+{"level":"info","message":"database init","timestamp":"2025-17-06 21:17"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-17-06 21:17"}
+{"level":"info","message":"database init","timestamp":"2025-17-06 21:17"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-17-06 21:17"}
+{"level":"info","message":"database init","timestamp":"2025-17-06 21:17"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-17-06 21:17"}
+{"level":"info","message":"database init","timestamp":"2025-18-06 21:18"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-18-06 21:18"}
+{"level":"info","message":"database init","timestamp":"2025-18-06 21:18"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-18-06 21:18"}
+{"level":"info","message":"database init","timestamp":"2025-18-06 21:18"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-18-06 21:18"}
+{"level":"info","message":"database init","timestamp":"2025-19-06 21:19"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-19-06 21:19"}
