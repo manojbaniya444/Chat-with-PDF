@@ -14,4 +14,21 @@ export class BaseRepository {
       throw new DatabaseError("Error querying database");
     }
   }
+
+  async executeTransaction(queries: { query: string; values: any[] }[]) {
+    const client = await pool.connect();
+    try {
+      await client.query("BEGIN");
+      for (const { query, values } of queries) {
+        await client.query(query, values);
+      }
+      await client.query("COMMIT");
+    } catch (error) {
+      await client.query("ROLLBACK");
+      console.log("Error executing transaction", error);
+      throw new DatabaseError("Error executing transaction");
+    } finally {
+      client.release();
+    }
+  }
 }

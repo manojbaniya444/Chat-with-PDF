@@ -11,13 +11,11 @@ created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 const documentTableSchema = `
 CREATE TABLE IF NOT EXISTS documents (
 id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+email VARCHAR(255) NOT NULL,
 user_id UUID REFERENCES users(id),
 file_name VARCHAR(255) NOT NULL,
 file_size_bytes INTEGER NOT NULL,
-s3_key VARCHAR(512) NOT NULL,
 pages INTEGER,
-status VARCHAR(50) DEFAULT 'pending',
-error TEXT,
 created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 )
 `;
@@ -48,8 +46,7 @@ CREATE TABLE IF NOT EXISTS document_embeddings (
 id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 document_id UUID REFERENCES documents(id),
 content TEXT NOT NULL,
-embedding vector(512),
-metadata JSONB,
+embedding vector(768),
 created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 )
 `;

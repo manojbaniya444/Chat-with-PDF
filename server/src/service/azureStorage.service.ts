@@ -8,6 +8,7 @@ import {
   generateBlobSASQueryParameters,
 } from "@azure/storage-blob";
 import { UploadError } from "../utils/errors/upload.error";
+import { IDocument } from "../model/document.model";
 
 export class UploadService {
   private uploadRepository: UploadRepository;
@@ -38,7 +39,10 @@ export class UploadService {
   async fetchPdfFromAzure(
     blobName: string,
     containerName?: string
-  ): Promise<Buffer> {
+  ): Promise<{
+    pdfBuffer: Buffer;
+    sizeInBytes: number;
+  }> {
     try {
       const containerClient = this.blobServiceClient.getContainerClient(
         this.containerName
@@ -47,12 +51,13 @@ export class UploadService {
 
       const downloadBlockBlobResponse = await blobClient.download();
       const chunks: Buffer[] = [];
+      const contentLength = downloadBlockBlobResponse.contentLength;
 
       for await (const chunk of downloadBlockBlobResponse.readableStreamBody!) {
         chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
       }
 
-      return Buffer.concat(chunks);
+      return { pdfBuffer: Buffer.concat(chunks), sizeInBytes: contentLength! };
     } catch (error) {
       if (error instanceof Error) {
         logger.error("Error downloading pdf Buffer from Azure storage", error);
@@ -104,10 +109,22 @@ export class UploadService {
     };
   }
 
-  async saveDocument(embeddingResponse: {
-    docs: string[];
-    embeddings: number[][];
-  }) {
-    //? save the respective document and embedding to the vector store
+  async saveDocument(
+    embeddingResponse: {
+      docs: string[];
+      embeddings: number[][];
+    },
+    documentData: Partial<IDocument>
+  ) {
+    const document = await this.uploadRepository.saveUploadedDocument(
+      documentData
+    );
+    console.log("Document saved", document);
+
+    const result = await this.uploadRepository.saveEmbeddings(
+    embeddingResponse,
+      document.id
+    );
+    return result ? result : false;
   }
 }

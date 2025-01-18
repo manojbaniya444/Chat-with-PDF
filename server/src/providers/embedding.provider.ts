@@ -44,10 +44,13 @@ export class EmbeddingsProvider {
         body: JSON.stringify(embeddingData),
       });
       const embedding: LocalEmbeddingResponseType = await response.json();
+
+      console.log("Got embeddings: ", embedding.data.length)
+
       const embeddings = embedding.data.map((emb) => emb.embedding);
       return {
         docs: inputs,
-        embeddings: embedding.data?.map((emb) => emb.embedding),
+        embeddings: embeddings,
       };
     } catch (error) {
       logger.error("Error fetching embeddings", error);

@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 const initialize = async () => {
   try {
-    // await initializeDatabase();
+    await initializeDatabase();
     logger.info("database init");
 
     app.listen(PORT, () => {

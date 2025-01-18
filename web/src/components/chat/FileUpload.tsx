@@ -4,6 +4,7 @@ import { Upload, X } from "lucide-react";
 interface SasResponse {
   token: string;
   uri: string;
+  uniqueFileName: string;
 }
 
 const FileUpload: React.FC = () => {
@@ -19,6 +20,7 @@ const FileUpload: React.FC = () => {
         `${import.meta.env.VITE_APP_API_URL}/upload/getSasToken`,
         {
           method: "POST",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
@@ -56,12 +58,13 @@ const FileUpload: React.FC = () => {
     if (!file) return;
     setLoading(true);
     try {
-      const { uri, token } = await getSasToken(file.name);
+      const { uri, token, uniqueFileName } = await getSasToken(file.name);
       const blobUrl = `${uri}?${token}`;
 
       const uploadResponse = await fetch(blobUrl, {
         method: "PUT",
         body: file,
+        credentials: "include",
         headers: {
           "x-ms-blob-type": "BlockBlob",
           "Content-Type": "application/pdf",
@@ -77,12 +80,12 @@ const FileUpload: React.FC = () => {
         `${import.meta.env.VITE_APP_API_URL}/upload/processPdf`,
         {
           method: "POST",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            blobUrl: uri,
-            fileName: file.name,
+            blobName: uniqueFileName,
           }),
         }
       );

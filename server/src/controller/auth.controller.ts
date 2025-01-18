@@ -1,7 +1,7 @@
 import { AuthService } from "../service/auth.service";
 import { Request, Response } from "express";
 
-export interface CustomResponse extends Response {
+export interface CustomRequest extends Request {
   user?: any;
 }
 export class AuthController {
@@ -55,7 +55,7 @@ export class AuthController {
     }
   }
 
-  async verifyLoginUser(req: Request, res: CustomResponse): Promise<any> {
+  async verifyLoginUser(req: CustomRequest, res: Response): Promise<any> {
     const cookies = req.cookies;
 
     const accessToken = cookies.accessToken;
@@ -70,7 +70,7 @@ export class AuthController {
 
     const userDetails = this.authService.verifyJwtToken(accessToken);
 
-    res.user = userDetails;
+    req.user = userDetails;
 
     return res.status(200).json({
       success: true,

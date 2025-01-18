@@ -55,7 +55,7 @@ export class AuthService {
 
   generateJwtToken(userData: Partial<IUser>): string {
     const token = jwt.sign(
-      { username: userData.username, email: userData.email },
+      { username: userData.username, email: userData.email, id: userData.id },
       config.auth.jwtSecret,
       {
         expiresIn: config.auth.jwtExpiry,

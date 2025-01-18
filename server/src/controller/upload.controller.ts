@@ -4,6 +4,8 @@ import { logger } from "../utils/logger";
 import { UploadError } from "../utils/errors/upload.error";
 import { extractTextFromPdfBuffer } from "../lib/pdf.lib";
 import { EmbeddingsProvider } from "../providers/embedding.provider";
+import { CustomRequest } from "./auth.controller";
+import { Document } from "../model/document.model";
 
 //? To fix: Dependency Management
 const embeddings = new EmbeddingsProvider("local");
@@ -36,6 +38,7 @@ export class UploadController {
       return res.json({
         uri: sas.baseUri,
         token: sas.token,
+        uniqueFileName: fileName,
       });
     } catch (error) {
       logger.error(
@@ -56,7 +59,7 @@ export class UploadController {
     }
   }
 
-  async processPdf(req: Request, res: Response) {
+  async processPdf(req: CustomRequest, res: Response) {
     try {
       // fetch the pdf from azure
       const { blobName } = req.body;
@@ -67,14 +70,24 @@ export class UploadController {
           message: "No blob name provided error while processing pdf",
         });
       }
-      const pdfBuffer = await this.uploadService.fetchPdfFromAzure(blobName);
+
+      const { pdfBuffer, sizeInBytes } =
+        await this.uploadService.fetchPdfFromAzure(blobName);
       const pdfText = await extractTextFromPdfBuffer(pdfBuffer);
       // generate embeddings
       const textWithEmbeddings = await this.embeddingsProvider.getEmbedding(
         pdfText.text
       );
+  
+      const documentData = new Document({
+        id: req.user.id,
+        email: req.user.email,
+        pages: pdfText.numOfPages,
+        file_size_bytes: sizeInBytes,
+        file_name: blobName,
+      });
       // store embeddings in the vector store
-      await this.uploadService.saveDocument(textWithEmbeddings);
+      await this.uploadService.saveDocument(textWithEmbeddings, documentData);
       // send the response
       return res.status(200).json({
         success: true,
