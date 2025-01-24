@@ -5,5 +5,5 @@ import { verifyLoginUser } from "../middleware/auth.middleware";
 
 export default function setupRoutes(app: any) {
   app.use("/auth", authRoute);
-  app.use("/upload", verifyLoginUser, uploadRoute);
+  app.use("/document", uploadRoute);
 }

@@ -109,6 +109,46 @@ export class UploadService {
     };
   }
 
+  async getSimilarDocuments(
+    documentId: string,
+    embedding: number[],
+    k: number
+  ) {
+    const topKSimilarDocuments =
+      await this.uploadRepository.getNearestDocumentBySimilarity(
+        documentId,
+        embedding,
+        k
+      );
+    return topKSimilarDocuments;
+  }
+  async getDocumentEmbeddings(documentId: string) {
+    const embeddings = await this.uploadRepository.getEmbeddingsOfDocument(
+      documentId
+    );
+    return embeddings;
+  }
+
+  async getDocuments() {
+    const documents = await this.uploadRepository.getDocuments();
+    return documents;
+  }
+
+  async getDocumentByUserEmail(email: string) {
+    const documents = await this.uploadRepository.getUserDocuments(email);
+    return documents;
+  }
+
+  async getDocumentById(id: string) {
+    const document = await this.uploadRepository.getDocumentById(id);
+    return document;
+  }
+
+  async deleteDocument(id: string) {
+    const deletedDocument = await this.uploadRepository.deletDocument(id);
+    return deletedDocument;
+  }
+
   async saveDocument(
     embeddingResponse: {
       docs: string[];
@@ -122,7 +162,7 @@ export class UploadService {
     console.log("Document saved", document);
 
     const result = await this.uploadRepository.saveEmbeddings(
-    embeddingResponse,
+      embeddingResponse,
       document.id
     );
     return result ? result : false;

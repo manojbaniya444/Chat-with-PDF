@@ -17,7 +17,7 @@ const FileUpload: React.FC = () => {
   const getSasToken = async (fileName: string): Promise<SasResponse> => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_APP_API_URL}/upload/getSasToken`,
+        `${import.meta.env.VITE_APP_API_URL}/document/getSasToken`,
         {
           method: "POST",
           credentials: "include",
@@ -77,7 +77,7 @@ const FileUpload: React.FC = () => {
 
       //TODO: Trigger Processing
       const processResponse = await fetch(
-        `${import.meta.env.VITE_APP_API_URL}/upload/processPdf`,
+        `${import.meta.env.VITE_APP_API_URL}/document/processPdf`,
         {
           method: "POST",
           credentials: "include",

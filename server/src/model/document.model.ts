@@ -17,7 +17,8 @@ export class Document implements IDocument {
   pages: number;
   created_at: Date;
   constructor(documentData: Partial<IDocument>) {
-    (this.id = documentData.id!), (this.user_id = documentData.user_id!);
+    this.id = documentData.id!;
+    this.user_id = documentData.user_id!;
     this.file_name = documentData.file_name!;
     this.file_size_bytes = documentData.file_size_bytes!;
     this.pages = documentData.pages!;

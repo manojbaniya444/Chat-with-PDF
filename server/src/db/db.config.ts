@@ -12,18 +12,20 @@ export const pool = new pg.Pool({
 
 export const initializeDatabase = async (): Promise<void> => {
   const client = await pool.connect();
+
   try {
     await client.query("BEGIN");
     await client.query("CREATE EXTENSION IF NOT EXISTS pgcrypto");
-    console.log("Extension pgcrypto")
+    console.log("Extension pgcrypto");
     await client.query("CREATE EXTENSION IF NOT EXISTS vector");
-    console.log("vector")
 
     for (const query of Object.values(tableSQLQuery)) {
       await client.query(query);
     }
 
-    console.log("Everything done")
+    await client.query(
+      "CREATE INDEX ON document_embeddings USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 64)"
+    );
 
     await client.query("COMMIT");
   } catch (error) {
