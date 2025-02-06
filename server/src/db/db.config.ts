@@ -3,11 +3,7 @@ import { tableSQLQuery } from "./db.schema";
 import { config } from "../config/env.config";
 
 export const pool = new pg.Pool({
-  user: config.database.user,
-  database: config.database.name,
-  port: Number(config.database.port),
-  host: config.database.host,
-  password: config.database.password,
+  connectionString: config.database.connectionString,
 });
 
 export const initializeDatabase = async (): Promise<void> => {

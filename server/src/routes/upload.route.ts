@@ -15,7 +15,7 @@ router.post(
 );
 router.get("/", uploadController.getDocuments.bind(uploadController)); // fetch all documents just for testing not for the clients to get all list of data.
 router.post("/processPdf", uploadController.processPdf.bind(uploadController));
-router.get("/user/:email", uploadController.getUserDocuments.bind(uploadController));
+router.get("/user", uploadController.getUserDocuments.bind(uploadController));
 router.get(
   "/embedding",
   uploadController.getDocumentEmbeddings.bind(uploadController)
@@ -26,5 +26,6 @@ router.post(
 );
 router.get("/:id", uploadController.getDocumentById.bind(uploadController));
 router.delete("/:id", uploadController.deleteDocument.bind(uploadController));
+router.post("/chat", uploadController.getAIResponse.bind(uploadController));
 
 export default router;

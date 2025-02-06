@@ -19,6 +19,56 @@ export class UploadController {
     this.embeddingsProvider = embeddings;
   }
 
+  async getAIResponse(req: Request, res: Response): Promise<any> {
+    const question = req.body.question;
+    const documentId = req.body.documentId;
+
+    // validate the req
+    if (!question || !documentId) {
+      console.log(question, documentId)
+      return res.status(400).json({
+        success: false,
+        message: "Please provide the document id and question both",
+      });
+    }
+
+    try {
+      // get the document embedding
+      const embeddingQuestion = await this.embeddingsProvider.embedText(
+        question
+      );
+
+      // get the topk documents
+      let retrievedDocuments = await this.uploadService.getSimilarDocuments(
+        documentId,
+        embeddingQuestion,
+        3
+      );
+      if (!retrievedDocuments) {
+        retrievedDocuments = ["No Context Available"];
+      }
+
+      // chat get the response using the document and question
+      const response = await this.uploadService.getAIResponse(
+        question,
+        retrievedDocuments
+      );
+
+      // return the ai response
+      return res.status(200).json({
+        success: true,
+        message: "Got the ai Response",
+        data: response,
+      });
+    } catch (error) {
+      logger.error("Error getting the response from ai", error);
+      return res.status(400).json({
+        success: false,
+        message: "Error getting ai response",
+      });
+    }
+  }
+
   async getDocumentEmbeddings(req: Request, res: Response): Promise<any> {
     const documentId = req.body.documentId;
 
@@ -240,9 +290,11 @@ export class UploadController {
         pdfText.text
       );
 
+      console.log(req.user);
+
       const documentData = new Document({
-        user_id: req.user.id,
-        email: req.user.email,
+        user_id: req.user?.id,
+        email: req.user?.email,
         pages: pdfText.numOfPages,
         file_size_bytes: sizeInBytes,
         file_name: blobName,

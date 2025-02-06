@@ -325,3 +325,143 @@
 {"level":"info","message":"Server is running on port 8080","timestamp":"2025-18-06 01:18"}
 {"code":"DATABASE_ERROR","level":"error","message":"Error fetching single document. Error querying database","stack":"Error: Error querying database\n    at UploadRepository.<anonymous> (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:14:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-18-06 01:18"}
 {"level":"error","message":"Error fetching document with document id","timestamp":"2025-18-06 01:18"}
+{"code":"XX000","length":73,"level":"error","message":"Error starting server:  connection is insecure (try using `sslmode=require`)","name":"error","severity":"ERROR","stack":"error: connection is insecure (try using `sslmode=require`)\n    at D:\\Chat-with-PDF\\server\\node_modules\\pg-pool\\index.js:45:11\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-38-04 20:38"}
+{"level":"info","message":"database init","timestamp":"2025-41-04 20:41"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-41-04 20:41"}
+{"level":"info","message":"Got 16 documents to embedding","timestamp":"2025-45-04 20:45"}
+{"level":"error","message":"Error while processing pdf Cannot read properties of undefined (reading 'id')","stack":"TypeError: Cannot read properties of undefined (reading 'id')\n    at UploadController.<anonymous> (D:\\Chat-with-PDF\\server\\src\\controller\\upload.controller.ts:244:27)\n    at Generator.next (<anonymous>)\n    at fulfilled (D:\\Chat-with-PDF\\server\\src\\controller\\upload.controller.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-45-04 20:45"}
+{"level":"info","message":"database init","timestamp":"2025-50-04 20:50"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-50-04 20:50"}
+{"level":"info","message":"database init","timestamp":"2025-51-04 20:51"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-51-04 20:51"}
+{"level":"info","message":"Got 16 documents to embedding","timestamp":"2025-52-04 20:52"}
+{"code":"DATABASE_ERROR","level":"error","message":"Error inserting documenet to database Error querying database","stack":"Error: Error querying database\n    at UploadRepository.<anonymous> (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:14:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-52-04 20:52"}
+{"code":"DATABASE_ERROR","level":"error","message":"Error while processing pdf Error inserting document to database","stack":"Error: Error inserting document to database\n    at UploadRepository.<anonymous> (D:\\Chat-with-PDF\\server\\src\\repository\\upload.repository.ts:147:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\repository\\upload.repository.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-52-04 20:52"}
+{"level":"info","message":"database init","timestamp":"2025-54-04 20:54"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-54-04 20:54"}
+{"level":"info","message":"Got 16 documents to embedding","timestamp":"2025-54-04 20:54"}
+{"level":"error","message":"No access token","timestamp":"2025-56-04 20:56"}
+{"level":"error","message":"No access token","timestamp":"2025-50-04 21:50"}
+{"level":"error","message":"No access token","timestamp":"2025-50-04 21:50"}
+{"level":"error","message":"No access token","timestamp":"2025-50-04 21:50"}
+{"level":"error","message":"No access token","timestamp":"2025-50-04 21:50"}
+{"level":"error","message":"No access token","timestamp":"2025-50-04 21:50"}
+{"level":"error","message":"No access token","timestamp":"2025-50-04 21:50"}
+{"level":"error","message":"No access token","timestamp":"2025-52-04 21:52"}
+{"level":"error","message":"No access token","timestamp":"2025-52-04 21:52"}
+{"level":"error","message":"No access token","timestamp":"2025-53-04 21:53"}
+{"level":"error","message":"No access token","timestamp":"2025-53-04 21:53"}
+{"level":"error","message":"No access token","timestamp":"2025-53-04 21:53"}
+{"level":"error","message":"No access token","timestamp":"2025-53-04 21:53"}
+{"level":"error","message":"No access token","timestamp":"2025-53-04 21:53"}
+{"level":"error","message":"No access token","timestamp":"2025-53-04 21:53"}
+{"level":"error","message":"No access token","timestamp":"2025-54-04 21:54"}
+{"level":"error","message":"No access token","timestamp":"2025-54-04 21:54"}
+{"level":"error","message":"No access token","timestamp":"2025-54-04 21:54"}
+{"level":"error","message":"No access token","timestamp":"2025-54-04 21:54"}
+{"level":"error","message":"No access token","timestamp":"2025-54-04 21:54"}
+{"level":"error","message":"No access token","timestamp":"2025-54-04 21:54"}
+{"level":"error","message":"No access token","timestamp":"2025-55-04 21:55"}
+{"level":"error","message":"No access token","timestamp":"2025-55-04 21:55"}
+{"level":"error","message":"No access token","timestamp":"2025-55-04 21:55"}
+{"level":"error","message":"No access token","timestamp":"2025-55-04 21:55"}
+{"level":"error","message":"No access token","timestamp":"2025-56-04 21:56"}
+{"level":"error","message":"No access token","timestamp":"2025-56-04 21:56"}
+{"level":"error","message":"No access token","timestamp":"2025-56-04 21:56"}
+{"level":"error","message":"No access token","timestamp":"2025-56-04 21:56"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-57-04 21:57"}
+{"level":"error","message":"No access token","timestamp":"2025-58-04 21:58"}
+{"level":"error","message":"No access token","timestamp":"2025-58-04 21:58"}
+{"level":"error","message":"No access token","timestamp":"2025-58-04 21:58"}
+{"level":"error","message":"No access token","timestamp":"2025-58-04 21:58"}
+{"level":"error","message":"No access token","timestamp":"2025-58-04 21:58"}
+{"level":"error","message":"No access token","timestamp":"2025-58-04 21:58"}
+{"level":"error","message":"No access token","timestamp":"2025-59-04 21:59"}
+{"level":"error","message":"No access token","timestamp":"2025-59-04 21:59"}
+{"level":"error","message":"No access token","timestamp":"2025-59-04 21:59"}
+{"level":"error","message":"No access token","timestamp":"2025-59-04 21:59"}
+{"level":"error","message":"No access token","timestamp":"2025-00-04 22:00"}
+{"level":"error","message":"No access token","timestamp":"2025-00-04 22:00"}
+{"level":"error","message":"No access token","timestamp":"2025-00-04 22:00"}
+{"level":"error","message":"No access token","timestamp":"2025-00-04 22:00"}
+{"level":"error","message":"No access token","timestamp":"2025-00-04 22:00"}
+{"level":"error","message":"No access token","timestamp":"2025-00-04 22:00"}
+{"level":"error","message":"No access token","timestamp":"2025-00-04 22:00"}
+{"level":"error","message":"No access token","timestamp":"2025-00-04 22:00"}
+{"code":"DATABASE_ERROR","level":"error","message":"Error fetching single document. Error querying database","stack":"Error: Error querying database\n    at UploadRepository.<anonymous> (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:14:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-01-04 22:01"}
+{"level":"error","message":"Error fetching document with document id","timestamp":"2025-01-04 22:01"}
+{"code":"DATABASE_ERROR","level":"error","message":"Error fetching single document. Error querying database","stack":"Error: Error querying database\n    at UploadRepository.<anonymous> (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:14:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-01-04 22:01"}
+{"level":"error","message":"Error fetching document with document id","timestamp":"2025-01-04 22:01"}
+{"code":"DATABASE_ERROR","level":"error","message":"Error fetching single document. Error querying database","stack":"Error: Error querying database\n    at UploadRepository.<anonymous> (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:14:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-01-04 22:01"}
+{"level":"error","message":"Error fetching document with document id","timestamp":"2025-01-04 22:01"}
+{"code":"DATABASE_ERROR","level":"error","message":"Error fetching single document. Error querying database","stack":"Error: Error querying database\n    at UploadRepository.<anonymous> (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:14:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-01-04 22:01"}
+{"level":"error","message":"Error fetching document with document id","timestamp":"2025-01-04 22:01"}
+{"code":"DATABASE_ERROR","level":"error","message":"Error fetching single document. Error querying database","stack":"Error: Error querying database\n    at UploadRepository.<anonymous> (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:14:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-02-04 22:02"}
+{"level":"error","message":"Error fetching document with document id","timestamp":"2025-02-04 22:02"}
+{"code":"DATABASE_ERROR","level":"error","message":"Error fetching single document. Error querying database","stack":"Error: Error querying database\n    at UploadRepository.<anonymous> (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:14:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\repository\\base.repository.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","status":500,"timestamp":"2025-02-04 22:02"}
+{"level":"error","message":"Error fetching document with document id","timestamp":"2025-02-04 22:02"}
+{"level":"info","message":"database init","timestamp":"2025-03-04 22:03"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-03-04 22:03"}
+{"level":"info","message":"database init","timestamp":"2025-40-04 22:40"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-40-04 22:40"}
+{"level":"info","message":"database init","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"database init","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"database init","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"database init","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"database init","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-43-04 22:43"}
+{"level":"info","message":"database init","timestamp":"2025-45-04 22:45"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-45-04 22:45"}
+{"level":"info","message":"database init","timestamp":"2025-50-04 22:50"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-50-04 22:50"}
+{"level":"info","message":"database init","timestamp":"2025-08-04 23:08"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-08-04 23:08"}
+{"level":"info","message":"database init","timestamp":"2025-10-04 23:10"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-10-04 23:10"}
+{"level":"info","message":"database init","timestamp":"2025-10-04 23:10"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-10-04 23:10"}
+{"level":"info","message":"database init","timestamp":"2025-11-04 23:11"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-11-04 23:11"}
+{"level":"info","message":"database init","timestamp":"2025-11-04 23:11"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-11-04 23:11"}
+{"level":"info","message":"database init","timestamp":"2025-12-04 23:12"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-12-04 23:12"}
+{"level":"info","message":"database init","timestamp":"2025-13-04 23:13"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-13-04 23:13"}
+{"level":"info","message":"database init","timestamp":"2025-14-04 23:14"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-14-04 23:14"}
+{"level":"info","message":"database init","timestamp":"2025-14-04 23:14"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-14-04 23:14"}
+{"level":"info","message":"database init","timestamp":"2025-15-04 23:15"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-15-04 23:15"}
+{"level":"info","message":"database init","timestamp":"2025-22-04 23:22"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-22-04 23:22"}
+{"level":"info","message":"database init","timestamp":"2025-23-04 23:23"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-23-04 23:23"}
+{"cause":{"code":"ERR_INVALID_URL","input":"groq"},"level":"error","message":"Error getting AI Response Failed to parse URL from groq","stack":"TypeError: Failed to parse URL from groq\n    at Object.fetch (node:internal/deps/undici/undici:11372:11)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-24-04 23:24"}
+{"level":"error","message":"Error getting the response from ai Error providing llm response service","stack":"Error: Error providing llm response service\n    at UploadService.<anonymous> (D:\\Chat-with-PDF\\server\\src\\service\\azureStorage.service.ts:61:13)\n    at Generator.throw (<anonymous>)\n    at rejected (D:\\Chat-with-PDF\\server\\src\\service\\azureStorage.service.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-24-04 23:24"}
+{"level":"info","message":"database init","timestamp":"2025-26-04 23:26"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-26-04 23:26"}
+{"level":"info","message":"database init","timestamp":"2025-29-04 23:29"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-29-04 23:29"}
+{"level":"info","message":"database init","timestamp":"2025-29-04 23:29"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-29-04 23:29"}
+{"level":"info","message":"database init","timestamp":"2025-34-04 23:34"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-34-04 23:34"}
+{"level":"info","message":"database init","timestamp":"2025-35-04 23:35"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-35-04 23:35"}
+{"level":"info","message":"database init","timestamp":"2025-20-05 00:20"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-20-05 00:20"}

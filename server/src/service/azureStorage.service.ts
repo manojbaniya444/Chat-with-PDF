@@ -9,6 +9,9 @@ import {
 } from "@azure/storage-blob";
 import { UploadError } from "../utils/errors/upload.error";
 import { IDocument } from "../model/document.model";
+import LLMProvider from "../providers/llm.provider";
+
+const llmProvider = new LLMProvider("local");
 
 export class UploadService {
   private uploadRepository: UploadRepository;
@@ -16,6 +19,7 @@ export class UploadService {
   private blobServiceClient: BlobServiceClient;
   private accountKey: string;
   private accountName: string;
+  private llmProvider: LLMProvider;
 
   constructor(uploadRepository: UploadRepository) {
     this.uploadRepository = uploadRepository;
@@ -23,6 +27,7 @@ export class UploadService {
     this.blobServiceClient = this.initializeAzureBlobStorageClient();
     this.accountKey = config.azure.storageKey!;
     this.accountName = config.azure.accountName!;
+    this.llmProvider = llmProvider;
   }
 
   private initializeAzureBlobStorageClient() {
@@ -33,6 +38,27 @@ export class UploadService {
     } catch (error) {
       logger.error("Error while connecting azure blob storage", error);
       throw new Error("Error connecting azure blob storage");
+    }
+  }
+
+  async getAIResponse(
+    question: string,
+    retrievedDocuments: any[]
+  ): Promise<any> {
+    let context = "";
+
+    retrievedDocuments.forEach((doc) => {
+      context += doc.content;
+    });
+
+    try {
+      const response = await this.llmProvider.getChatCompletion(
+        question,
+        context
+      );
+      return response;
+    } catch (error) {
+      throw new Error("Error providing llm response service");
     }
   }
 

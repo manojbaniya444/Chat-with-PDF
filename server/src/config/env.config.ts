@@ -12,6 +12,7 @@ export const config = {
     password: process.env.DB_PASSWORD,
     name: process.env.DB_NAME,
     host: process.env.DB_HOST,
+    connectionString: process.env.CONNECTION_STRING,
   },
   auth: {
     googleClientId: process.env.GOOGLE_AUTH_CLIENT_ID,
@@ -33,5 +34,6 @@ export const config = {
   },
   localModel: {
     baseUrl: process.env.LOCAL_MODEL_BASE_URL,
+    providerName: process.env.LOCAL_LLM_MODEL_NAME,
   },
 };
